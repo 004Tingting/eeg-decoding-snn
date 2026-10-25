@@ -6,6 +6,26 @@ with two non-spiking baselines and one spiking network, trained under a fixed
 protocol and evaluated under both a holdout split and 5-fold stratified
 cross-validation. Chance level is 25 %.
 
+## Results at a glance
+
+**5-fold stratified CV over all 288 trials** (the literature protocol):
+
+| Model | mean ± std over subjects | best subjects |
+|---|---|---|
+| EEGNet (ANN) | 52.5 ± 17.7 % | A08 78.5, A09 74.0 |
+| DeepConvNet (ANN) | 38.3 ± 15.2 % | A09 72.2 |
+| **SpikingEEGNet** | **57.8 ± 19.3 %** | **A08 82.7 ± 3.2, A09 82.3 ± 1.3** |
+
+![3-model kfold comparison](results/fig_kfold_models.png)
+
+**The spiking model outperforms the ANN EEGNet on every one of the 9
+subjects** (+5.3 pt mean), with remarkable fold stability on the best
+subjects (A09 ± 1.3 %). Holdout reference (75/25 split): EEGNet 47.5 ± 16.6,
+DeepConvNet 38.4 ± 15.9, SpikingEEGNet 56.8 ± 22.1 (best subjects up to
+84.7 %). Published within-session means (~65-75 %) typically use heavier
+calibration pipelines; the gap and the next levers are documented in
+`results/RESULTS.md`.
+
 ## Models
 
 | Model | Type | Size |
